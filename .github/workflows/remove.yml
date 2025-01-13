@@ -55,7 +55,7 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Upload APK to Release
         uses: actions/upload-release-asset@v1
@@ -64,3 +64,5 @@ jobs:
           asset_path: app/build/outputs/apk/${{ github.event.inputs.build_type }}/app-${{ github.event.inputs.build_type }}.apk
           asset_name: app-${{ github.event.inputs.build_type }}.apk
           asset_content_type: application/vnd.android.package-archive
+        env:
+          TOKEN: ${{ secrets.RELEASE_TOKEN }}
