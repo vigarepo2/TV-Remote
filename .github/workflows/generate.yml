@@ -29,11 +29,11 @@ jobs:
         run: |
           if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
             echo "gradle-wrapper.jar is missing. Generating it..."
-            ./gradlew wrapper
+            ./gradlew wrapper --gradle-version 7.5.1
             git config --global user.name "github-actions"
             git config --global user.email "actions@github.com"
-            git add gradle/wrapper/gradle-wrapper.jar
-            git commit -m "Add missing gradle-wrapper.jar"
+            git add gradle/wrapper/gradle-wrapper.jar gradle/wrapper/gradle-wrapper.properties gradlew gradlew.bat
+            git commit -m "Add missing Gradle wrapper files"
             git push origin main
           fi
 
